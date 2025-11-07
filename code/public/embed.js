@@ -3,9 +3,10 @@
 
   // Create iframe container
   const iframeWrapper = document.createElement("div");
-  iframeWrapper.style.position = "absolute";
-  iframeWrapper.style.bottom = "0px";
+  iframeWrapper.style.position = "fixed";
+  iframeWrapper.style.bottom = "20px";
   iframeWrapper.style.right = "20px";
+   iframeWrapper.style.marginLeft = "auto";
   iframeWrapper.style.width = "300px";
   iframeWrapper.style.height = "520px";
   iframeWrapper.style.borderRadius = "16px";
@@ -48,9 +49,10 @@
   // Floating chat bubble
   const bubble = document.createElement("div");
   bubble.innerHTML = "💬";
-  bubble.style.position = "absolute";
-  bubble.style.bottom = "0px";
+  bubble.style.position = "fixed";
+  bubble.style.bottom = "20px";
   bubble.style.right = "20px";
+   bubble.style.marginLeft = "auto"; 
   bubble.style.width = "60px";
   bubble.style.height = "60px";
   bubble.style.borderRadius = "50%";
@@ -68,6 +70,9 @@
     iframeWrapper.style.display = "block";
   });
 
+  
   document.body.appendChild(iframeWrapper);
   document.body.appendChild(bubble);
 })();
+
+
