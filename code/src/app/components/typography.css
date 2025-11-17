@@ -2,7 +2,7 @@
 
 :root {
   --background: var(--color-bg-gradient);
-  --foreground: var(--color-cinereous);
+  --foreground: var(--color-deep-mocha);
   --font-sans: var(--font-montserrat);
 }
 
