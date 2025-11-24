@@ -355,7 +355,7 @@ export default function DashboardPage({ initialRows }: { initialRows: LeadRowDat
     );
 }
 
-function DeleteButton({ onClick }) {
+function DeleteButton({ onClick }: { onClick: () => void }) {
     return (
         <button
             className="px-3 py-2 rounded-md bg-[var(--color-rose)] text-white disabled:opacity-60"
