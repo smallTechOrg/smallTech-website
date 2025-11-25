@@ -52,7 +52,7 @@ export default function Offerings() {
           Integrate AI across your stack and into your existing workflows
         </h3>
 
-        <div className="grid grid-cols-6 gap-10">
+        <div className="grid grid-cols-6 gap-2">
           {techItems.map((icon, idx) => (
             <div key={idx} className="flex justify-center">
               <Image src={`./${icon}`} alt={icon} width={40} height={40} />
