@@ -41,5 +41,7 @@ export const techItems = [
   "gitlab.png", 
   "sonarqube.png", 
   "prometheus.png", 
-  "grafana.png"
+  "grafana.png",
+  "java.png",
+  "react.png"
 ];
