@@ -32,9 +32,9 @@ h3 {
   text-mauve-bark
 }
 p {
-  @apply text-justify
-  leading-snug
-  font-[200]
+  @apply 
+  
+  font-[300]
   text-[14px] 
   sm:text-[16px]
   md:text-[17px]

@@ -14,10 +14,10 @@ export default function Landing() {
           {/* LEFT COLUMN */}
           <div className="flex flex-col gap-12">
             <div>
-              <h2 className="mb-3">
+              <h2 className=" mb-3">
                 Our Mission
               </h2>
-              <p className="mb-1 max-w-3xl">
+              <p className=" mb-1 max-w-3xl">
                 At smallTech we are changing how the world &quot;works&quot;.
          
                 By centring our philosophy around the effort to strive balance between production and consumption. </p>
