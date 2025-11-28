@@ -60,7 +60,7 @@ export default function Box({ image,
           alt={title}
           width={100}
           height={100}
-          className="mb-4 object-contain opacity-85"
+          className="mb-4 object-contain opacity-70"
         />
 
         {/* TITLE */}
