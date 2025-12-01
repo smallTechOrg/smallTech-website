@@ -36,11 +36,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-      <script 
-    src="https://staging.smalltech.in/embed.js"
-    data-chat-url="https://staging.smalltech.in/embed"
-    async
-  ></script>
+        <script
+          src={`${process.env.NEXT_PUBLIC_EMBED_BASE_URL}/embed.js`}
+          data-chat-url={`${process.env.NEXT_PUBLIC_EMBED_BASE_URL}/embed`}
+          async
+        ></script>
         {/* Google Analytics */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-YTYS0G2P7L"
