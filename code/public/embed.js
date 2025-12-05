@@ -90,6 +90,13 @@
 
   bubble.addEventListener("click", () => {
     iframeWrapper.style.display = "block";
+    // Track click in GA4
+    if (typeof window.gtag === "function") {
+      window.gtag("event", "chat_bubble_clicked", {
+        event_category: "chat_widget",
+        event_label: "floating_bubble",
+      });
+    }
   });
 
   function addChatElements() {
