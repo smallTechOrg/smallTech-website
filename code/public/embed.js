@@ -1,8 +1,10 @@
 (function () {
+  const script = document.currentScript;  
   const chatUrl =
     document.currentScript.getAttribute("data-chat-url") ||
     "https://smalltech.in/embed";
 
+    const enableMobile = script.getAttribute("data-display-mobile") === "true";
   // Create iframe container
   const iframeWrapper = document.createElement("div");
   iframeWrapper.style.position = "fixed";
@@ -82,14 +84,24 @@
   bubble.style.fontSize = "28px";
   bubble.style.boxShadow = "0 4px 12px rgba(0,0,0,0.15)";
   bubble.style.zIndex = "999998";
-  if (window.matchMedia("(max-width: 768px)").matches) {
-    iframeWrapper.style.display = "none";
+
+  // Hide on mobile if enableMobile = false
+  if (!enableMobile && window.matchMedia("(max-width: 768px)").matches) {
     bubble.style.display = "none";
     bubbleText.style.display = "none";
+    iframeWrapper.style.display = "none";
   }
+
 
   bubble.addEventListener("click", () => {
     iframeWrapper.style.display = "block";
+    // Track click in GA4
+    if (typeof window.gtag === "function") {
+      window.gtag("event", "chat_bubble_clicked", {
+        event_category: "chat_widget",
+        event_label: "floating_bubble",
+      });
+    }
   });
 
   function addChatElements() {
