@@ -4,7 +4,10 @@
     document.currentScript.getAttribute("data-chat-url") ||
     "https://smalltech.in/embed";
 
-    const enableMobile = script.getAttribute("data-display-mobile") === "true";
+     const attr = script.getAttribute("data-display-mobile");
+     const enableMobile = attr === null ? true : attr === "true";
+   
+
   // Create iframe container
   const iframeWrapper = document.createElement("div");
   iframeWrapper.style.position = "fixed";
