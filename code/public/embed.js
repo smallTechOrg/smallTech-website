@@ -1,10 +1,14 @@
 (function () {
-  const script = document.currentScript;  
+  const script = document.currentScript;
   const chatUrl =
     document.currentScript.getAttribute("data-chat-url") ||
     "https://smalltech.in/embed";
 
-    const enableMobile = script.getAttribute("data-display-mobile") === "true";
+  const enableMobile = script.getAttribute("data-display-mobile") === "true";
+
+  // Capture the host website where this script is embedded
+  const hostWebsite = window.location.origin;
+
   // Create iframe container
   const iframeWrapper = document.createElement("div");
   iframeWrapper.style.position = "fixed";
@@ -23,7 +27,7 @@
 
   // iframe inside wrapper
   const iframe = document.createElement("iframe");
-  iframe.src = chatUrl;
+  iframe.src = `${chatUrl}?host=${encodeURIComponent(hostWebsite)}`;
   iframe.style.width = "100%";
   iframe.style.height = "100%";
   iframe.style.border = "none";
