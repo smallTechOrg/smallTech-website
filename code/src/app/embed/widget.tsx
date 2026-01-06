@@ -1,7 +1,12 @@
 "use client";
 import { useChat } from "../hooks/useChat";
 import Image from "next/image";
+import { useSearchParams } from "next/navigation";
+
 export default function Chat() {
+  const searchParams = useSearchParams();
+  const hostWebsite = searchParams.get("host") || "";
+
   const {
     chatBoxText,
     messages,
@@ -10,7 +15,7 @@ export default function Chat() {
     isBotProcessing,
     sendMessage,
     setInput,
-  } = useChat();
+  } = useChat(hostWebsite);
 
   return (
     <div className="flex flex-col px-2 relative min-h-screen" >
