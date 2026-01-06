@@ -56,7 +56,7 @@ export function useChat(hostWebsite: string = "") {
                 const saved = loadSession();
                 sessionId.current = saved;
 
-                const url = `${process.env.NEXT_PUBLIC_API_URL}/history?session_id=${saved}${hostWebsite ? `&host=${encodeURIComponent(hostWebsite)}` : ''}`;
+                const url = `${process.env.NEXT_PUBLIC_API_URL}/history?session_id=${saved}${hostWebsite ? `&origin=${encodeURIComponent(hostWebsite)}` : ''}`;
                 console.log("[useChat] History API URL:", url);
                 const res = await fetch(url, { method: "GET" });
                 const data = await res.json();
@@ -120,7 +120,7 @@ export function useChat(hostWebsite: string = "") {
                 input: userMsg,
                 session_id: sessionId.current,
                 request_type: "sales",
-                host: hostWebsite,
+                origin: hostWebsite,
             };
             console.log("[useChat] Chat API payload:", payload);
 
