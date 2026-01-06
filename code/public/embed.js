@@ -32,7 +32,7 @@
 
   // iframe inside wrapper
   const iframe = document.createElement("iframe");
-  iframe.src = chatUrl;
+  iframe.src = `${chatUrl}?host=${encodeURIComponent(hostWebsite)}`;
   iframe.style.width = "100%";
   iframe.style.height = "100%";
   iframe.style.border = "none";
