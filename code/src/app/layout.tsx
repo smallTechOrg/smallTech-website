@@ -36,12 +36,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <script
-          src={`${process.env.NEXT_PUBLIC_EMBED_BASE_URL}/embed.js`}
-          data-chat-url={`${process.env.NEXT_PUBLIC_EMBED_BASE_URL}/embed`}
-          data-display-mobile="false" //to hide on mobile
-          async
-        ></script>
         {/* Google Analytics */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-YTYS0G2P7L"
