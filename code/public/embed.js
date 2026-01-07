@@ -4,6 +4,9 @@
     document.currentScript.getAttribute("data-chat-url") ||
     "https://smalltech.in/embed";
 
+  // Get the host website domain
+  const hostWebsite = window.location.origin;
+  
   let displayMobile = script.getAttribute("data-display-mobile");
   if (displayMobile === null || displayMobile.trim() === "") {
     displayMobile = true;
