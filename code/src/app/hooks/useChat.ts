@@ -120,11 +120,13 @@ export function useChat(hostWebsite: string = "") {
                 input: userMsg,
                 session_id: sessionId.current,
                 request_type: "sales",
-                origin: hostWebsite,
             };
+
+            const url = `${process.env.NEXT_PUBLIC_API_URL}/chat${hostWebsite ? `?origin=${encodeURIComponent(hostWebsite)}` : ''}`;
+            console.log("[useChat] Chat API URL:", url);
             console.log("[useChat] Chat API payload:", payload);
 
-            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/chat`, {
+            const res = await fetch(url, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(payload),
