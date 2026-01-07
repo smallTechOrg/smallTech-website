@@ -36,7 +36,7 @@ function loadSession(): string {
     );
     return newId;
 }
-export function useChat( ) {
+export function useChat(hostWebsite: string = "") {
     const [messages, setMessages] = useState<Message[]>([]);
     const [input, setInput] = useState("");
     const [isClient, setIsClient] = useState(false);
@@ -56,7 +56,8 @@ export function useChat( ) {
                 const saved = loadSession();
                 sessionId.current = saved;
 
-                const url = `${process.env.NEXT_PUBLIC_API_URL}/history?session_id=${saved}`;
+                const url = `${process.env.NEXT_PUBLIC_API_URL}/history?session_id=${saved}${hostWebsite ? `&origin=${encodeURIComponent(hostWebsite)}` : ''}`;
+                console.log("[useChat] History API URL:", url);
                 const res = await fetch(url, { method: "GET" });
                 const data = await res.json();
 
@@ -76,7 +77,7 @@ export function useChat( ) {
         };
 
         init();
-    }, []);
+    }, [hostWebsite]);
 
     // send message
     const sendMessage = async (e: React.FormEvent) => {
@@ -115,14 +116,20 @@ export function useChat( ) {
             const controller = new AbortController();
             const timeout = setTimeout(() => controller.abort(), REQUEST_TIMEOUT);
 
-            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/chat`, {
+            const payload = {
+                input: userMsg,
+                session_id: sessionId.current,
+                request_type: "sales",
+            };
+
+            const url = `${process.env.NEXT_PUBLIC_API_URL}/chat${hostWebsite ? `?origin=${encodeURIComponent(hostWebsite)}` : ''}`;
+            console.log("[useChat] Chat API URL:", url);
+            console.log("[useChat] Chat API payload:", payload);
+
+            const res = await fetch(url, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    input: userMsg,
-                    session_id: sessionId.current,
-                    request_type: "sales",
-                }),
+                body: JSON.stringify(payload),
                 signal: controller.signal,
             });
             clearTimeout(timeout);

@@ -6,10 +6,14 @@ import Domains from '../domains/domains';
 import Offerings from '../offerings/offerings';
 import Chat from '../chat/chat';
 import Portfolio from '../portfolio/portfolio';
+import EmbedScript from './embedScript';
+
 export default function ScrollLayout() {
 useScrollSync()
   return (
-    <main className="max-h-screen snap-y snap-mandatory overflow-y-scroll scroll-smooth">
+    <>
+      <EmbedScript />
+      <main className="max-h-screen snap-y snap-mandatory overflow-y-scroll scroll-smooth">
       <Page
           key="landing"
           id="landing"
@@ -38,7 +42,8 @@ useScrollSync()
           content={<Chat/>}
           className="md:hidden"
         />
-       
-    </main>
+
+      </main>
+    </>
   );
 }
