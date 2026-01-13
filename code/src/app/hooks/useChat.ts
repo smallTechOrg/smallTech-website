@@ -94,11 +94,19 @@ export function useChat(hostWebsite: string = "") {
         const hasTracked = localStorage.getItem(`chat_first_sent_${sessionId.current}`);
         if (!hasTracked) {
             try {
-                if (typeof window !== "undefined" && "gtag" in window) {
-                    (window).gtag("event", "chatbot_first_interaction", {
-                        session_id: sessionId.current,
-                        page_path: window.location.pathname,
-                    });
+                // Send analytics event to parent window (host website)
+                if (typeof window !== "undefined" && window.parent !== window) {
+                    window.parent.postMessage(
+                        {
+                            type: "ANALYTICS_EVENT",
+                            eventName: "chatbot_first_interaction",
+                            eventParams: {
+                                session_id: sessionId.current,
+                                page_path: window.location.pathname,
+                            },
+                        },
+                        "*" // Allow any origin since we don't know which websites will embed this
+                    );
                 }
                 localStorage.setItem(`chat_first_sent_${sessionId.current}`, "true");
             } catch (err) {
