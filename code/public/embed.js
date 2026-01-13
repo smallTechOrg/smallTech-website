@@ -105,15 +105,31 @@
       iframeWrapper.style.display = "none";
     }
   }
+  // Helper function to track analytics events
+  function trackAnalyticsEvent(eventName, eventParams) {
+    if (typeof window.gtag === "function") {
+      window.gtag("event", eventName, eventParams);
+    }
+  }
+
+  // Listen for analytics events from the iframe
+  window.addEventListener("message", (event) => {
+    //  verify the message is from our iframe
+    if (event.source === iframe.contentWindow) {
+      const { type, eventName, eventParams } = event.data;
+      if (type === "ANALYTICS_EVENT") {
+        trackAnalyticsEvent(eventName, eventParams);
+      }
+    }
+  });
+
   bubble.addEventListener("click", () => {
     iframeWrapper.style.display = "block";
-    // Track click in GA4
-    if (typeof window.gtag === "function") {
-      window.gtag("event", "chat_bubble_clicked", {
-        event_category: "chat_widget",
-        event_label: "floating_bubble",
-      });
-    }
+    // Track bubble click in host website's GA4
+    trackAnalyticsEvent("chat_bubble_clicked", {
+      event_category: "chat_widget",
+      event_label: "floating_bubble",
+    });
   });
 
   function addChatElements() {
