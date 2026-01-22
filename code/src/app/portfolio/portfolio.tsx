@@ -10,31 +10,31 @@ export default function Portfolio() {
         {/* <div className="flex flex-col md:flex-row justify-between gap-8"> */}
         <Box
           image="/sales.svg"
-          title="AI Sales Agent"
-          subtitle="Embeddable Chat for your Website"
-          description="Stop losing leads to late replies. Implement the SmallTech AI Sales Agent and automate 80% of your sales pipeline. "
-          buttonText="Try Demo"
-          onButtonClick={() => console.log("Clicked!")}
+          title="ZER0"
+          subtitle="AI Agents for Small Businesses"
+          description="Embeddable Smart Agent For Your Website. Automate Customer Support, Lead Generation, and Sales with AI."
+          buttonText="Visit Site"
+          onButtonClick={() => window.open("https://zero.smalltech.in", "_blank")}
           className="w-full max-w-[350px] 
         "
         />
         <Box
           image="/app.svg"
           title="#local"
-          subtitle="Coming Soon - Your City, Your Voice"
+          subtitle="Location Based Community Platform"
           description="It is the fastest way to report local potholes, illegal dumping, broken lights, and other civic issues directly to your local government. "
           buttonText="Download"
-          onButtonClick={() => console.log("Clicked!")}
+          onButtonClick={() => window.open("https://local.smalltech.in", "_blank")}
           className="w-full max-w-[350px]
         "
         />
         <Box
           image="/blog.svg"
-          title="AI Blog Generator"
-          subtitle="Create and publish using AI"
-          description="Stop staring at a blank screen. Our AI Blog Generator turns your ideas into engaging posts."
-          buttonText="Visit AI Blog"
-          onButtonClick={() => console.log("Clicked!")}
+          title="@str@"
+          subtitle="AI-Driven Content and Marketing"
+          description="Astra is our in-house Content Writer, Social Media Manager, SEO Specialist, and our resident Comedian"
+          buttonText="Visit Blog"
+          onButtonClick={() => window.open("https://aiblog.smalltech.in", "_blank")}
           className="w-full max-w-[350px]
         "
         />
