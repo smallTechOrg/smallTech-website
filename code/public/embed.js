@@ -62,6 +62,7 @@
   closeBtn.style.justifyContent = "center";
   closeBtn.addEventListener("click", () => {
     iframeWrapper.style.display = "none";
+    bubbleText.style.display = "block";
   });
   iframeWrapper.appendChild(closeBtn);
 
@@ -133,6 +134,7 @@ bubbleText.style.background = "rgba(255, 255, 255, 0.6)"; // #8ECAE6 with 10% op
 
   bubble.addEventListener("click", () => {
     iframeWrapper.style.display = "block";
+    bubbleText.style.display = "none";
     // Track bubble click in host website's GA4
     trackAnalyticsEvent("chat_bubble_clicked", {
       event_category: "chat_widget",
