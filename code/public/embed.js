@@ -17,6 +17,9 @@
   }
   //  const enableMobile = attr === null ? true : attr === "true";
 
+  // Get custom colour if provided
+  const customColour = script.getAttribute("data-colour") || "#5A2A27";
+
   // Create iframe container
   const iframeWrapper = document.createElement("div");
   iframeWrapper.style.position = "fixed";
@@ -59,6 +62,7 @@
   closeBtn.style.justifyContent = "center";
   closeBtn.addEventListener("click", () => {
     iframeWrapper.style.display = "none";
+    bubbleText.style.display = "block";
   });
   iframeWrapper.appendChild(closeBtn);
 
@@ -68,14 +72,19 @@
   bubbleText.style.position = "fixed";
   bubbleText.style.bottom = "60px";
   bubbleText.style.right = "140px";
-  bubbleText.style.background = "white";
+  bubbleText.style.background = "#8ECAE6";
+  // ...existing code...
+bubbleText.style.background = "rgba(255, 255, 255, 0.6)"; // #8ECAE6 with 10% opacity
+// ...existing code...
+  bubbleText.style.backgroundOpacity = "0.1";
   bubbleText.style.padding = "8px 12px";
   bubbleText.style.borderRadius = "12px";
   bubbleText.style.boxShadow = "0 4px 10px rgba(0,0,0,0.12)";
-  bubbleText.style.border = "1px solid #eee";
+  bubbleText.style.border = "3px solid #eee";
   bubbleText.style.zIndex = "999997";
-  bubbleText.style.fontSize = "14px";
-  bubbleText.style.color = "#5A2A27";
+  bubbleText.style.fontSize = "16px";
+    bubbleText.style.fontWeight = "500";
+  bubbleText.style.color = customColour;
 
   // Floating chat bubble
   const bubble = document.createElement("div");
@@ -87,7 +96,7 @@
   bubble.style.width = "60px";
   bubble.style.height = "60px";
   bubble.style.borderRadius = "50%";
-  bubble.style.background = "#5A2A27";
+  bubble.style.background = customColour;
   bubble.style.color = "white";
   bubble.style.display = "flex";
   bubble.style.alignItems = "center";
@@ -125,6 +134,7 @@
 
   bubble.addEventListener("click", () => {
     iframeWrapper.style.display = "block";
+    bubbleText.style.display = "none";
     // Track bubble click in host website's GA4
     trackAnalyticsEvent("chat_bubble_clicked", {
       event_category: "chat_widget",
