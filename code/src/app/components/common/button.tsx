@@ -18,6 +18,7 @@ export function Button({ text, onClick, className }: ButtonProps) {
        
         shadow-[0_3px_5px_0_rgba(0,0,0,0.4)]
         hover:opacity-90 transition
+        cursor-pointer
         ${className || ""}
       `}
         >
