@@ -77,7 +77,7 @@
   bubbleText.style.right = "140px";
   bubbleText.style.background = "#8ECAE6";
   // ...existing code...
-bubbleText.style.background = "rgba(53, 52, 52, 0.6)"; // #8ECAE6 with 10% opacity
+bubbleText.style.background = "rgba(255, 255, 255, 0.6)"; // #8ECAE6 with 10% opacity
 // ...existing code...
   bubbleText.style.backgroundOpacity = "0.1";
   bubbleText.style.padding = "8px 12px";
@@ -86,7 +86,7 @@ bubbleText.style.background = "rgba(53, 52, 52, 0.6)"; // #8ECAE6 with 10% opaci
   bubbleText.style.border = "3px solid #eee";
   bubbleText.style.zIndex = "999997";
   bubbleText.style.fontSize = "16px";
-    bubbleText.style.fontWeight = "500";
+    bubbleText.style.fontWeight = "600";
   bubbleText.style.color = customColour;
 
   // Floating chat bubble
