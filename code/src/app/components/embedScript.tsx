@@ -8,7 +8,9 @@ export default function EmbedScript() {
     const script = document.createElement('script');
     script.src = `${process.env.NEXT_PUBLIC_EMBED_BASE_URL}/embed.js`;
     script.setAttribute('data-chat-url', `${process.env.NEXT_PUBLIC_EMBED_BASE_URL}/embed`);
-    script.setAttribute('data-display-mobile', 'false');
+    script.setAttribute('data-display-mobile', 'true');
+    script.setAttribute('data-tagline', 'Talk To Us');
+    script.setAttribute('data-colour', '#473733');
     script.async = true;
 
     document.body.appendChild(script);

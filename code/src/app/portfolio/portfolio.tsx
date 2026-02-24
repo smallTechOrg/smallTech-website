@@ -10,7 +10,7 @@ export default function Portfolio() {
         {/* <div className="flex flex-col md:flex-row justify-between gap-8"> */}
         <Box
           image="/sales.svg"
-          title="ZER0"
+          title="Zer0"
           subtitle="AI Agents for Small Businesses"
           description="Embeddable Smart Agent For Your Website. Automate Customer Support, Lead Generation, and Sales with AI."
           buttonText="Visit Site"
