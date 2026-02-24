@@ -41,7 +41,7 @@
 
   // iframe inside wrapper
   const iframe = document.createElement("iframe");
-  iframe.src = `${chatUrl}?host=${encodeURIComponent(hostWebsite)}`;
+  iframe.src = `${chatUrl}?host=${encodeURIComponent(hostWebsite)}&color=${encodeURIComponent(customColour)}`;
   iframe.style.width = "100%";
   iframe.style.height = "100%";
   iframe.style.border = "none";
@@ -131,6 +131,10 @@ bubbleText.style.background = "rgba(255, 255, 255, 0.6)"; // #8ECAE6 with 10% op
       const { type, eventName, eventParams } = event.data;
       if (type === "ANALYTICS_EVENT") {
         trackAnalyticsEvent(eventName, eventParams);
+      } else if (type === "CLOSE_CHAT") {
+        // Handle close chat message from iframe
+        iframeWrapper.style.display = "none";
+        bubbleText.style.display = "block";
       }
     }
   });

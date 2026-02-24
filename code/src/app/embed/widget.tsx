@@ -1,11 +1,20 @@
 "use client";
 import { useChat } from "../hooks/useChat";
-import Image from "next/image";
 import { useSearchParams } from "next/navigation";
+import { useEffect } from "react";
+import { generateColorPalette, applyColorPalette, getThemeColor } from "./colorTheme";
+import styles from "./widget.module.css";
 
 export default function Chat() {
   const searchParams = useSearchParams();
   const hostWebsite = searchParams.get("host") || "";
+  
+  // Initialize color theme
+  useEffect(() => {
+    const themeColor = getThemeColor(searchParams);
+    const palette = generateColorPalette(themeColor);
+    applyColorPalette(palette);
+  }, [searchParams]);
 
   const {
     chatBoxText,
@@ -17,70 +26,129 @@ export default function Chat() {
     setInput,
   } = useChat(hostWebsite);
 
+  const handleClose = () => {
+    // Send close message to parent window
+    if (typeof window !== "undefined" && window.parent !== window) {
+      window.parent.postMessage({ type: "CLOSE_CHAT" }, "*");
+    }
+  };
+
   return (
-    <div className="flex flex-col px-2 relative min-h-screen" >
-      <h2 className="text-start">Meet Our AI Agent</h2>
-      <p className="text-start">
-        Talk to our smart assistant to explore services
-      </p>
-
-      <div
-        ref={chatBoxText}
-        className="flex flex-col overflow-y-auto space-y-1 "
-        style={{
-          flexGrow: 1,
-          maxHeight: "calc(110vh - 200px)",
-        }}
-
-      >
-      
-        {messages.map((msg, i) => (
-          <div
-            key={i}
-             className={`max-w-[85%] px-4 py-2 rounded-lg  ${msg.sender === "You"
-              ? " bg-seashell-pink self-end text-seashell-pink  shadow-lg"
-              : " bg-brown self-start  text-cream shadow-lg "
-              }`}
-          >
-            {msg.sender === "You" ? (
-              <p className="font-[400]">{msg.text}</p>
-            ) : (
-               <p className="text-seashell-pink font-[400]">{msg.text}</p>
-            )}
+    <div className={styles.chatContainer}>
+      {/* Header */}
+      <div className={styles.header}>
+        <div className={styles.headerContent}>
+          <div className={styles.headerIcon}>
+            💬
           </div>
-        ))}
+          <div className={styles.headerText}>
+            <h1 className={styles.headerTitle}>Chat with us</h1>
+            <p className={styles.headerSubtitle}>We typically reply instantly</p>
+          </div>
+        </div>
+        <button 
+          className={styles.closeButton}
+          onClick={handleClose}
+          aria-label="Close chat"
+          type="button"
+        >
+          ✕
+        </button>
+      </div>
+
+      {/* Messages Area */}
+      <div ref={chatBoxText} className={styles.messagesContainer}>
+        {messages.length === 0 && (
+          <div className={styles.emptyState}>
+            <div className={styles.emptyStateIcon}>👋</div>
+            <h2 className={styles.emptyStateTitle}>Welcome!</h2>
+            <p className={styles.emptyStateText}>
+              How can we help you today?
+            </p>
+          </div>
+        )}
+        
+        {messages.map((msg, i) => {
+          const isUser = msg.sender === "You";
+          const isBot = msg.sender === "Bot";
+          
+          return (
+            <div
+              key={i}
+              className={`${styles.message} ${
+                isUser ? styles.messageUser : styles.messageBot
+              }`}
+            >
+              <div
+                className={`${styles.messageAvatar} ${
+                  isUser ? styles.messageAvatarUser : styles.messageAvatarBot
+                }`}
+              >
+                {isUser ? "👤" : "🤖"}
+              </div>
+              <div
+                className={`${styles.messageBubble} ${
+                  isUser ? styles.messageBubbleUser : styles.messageBubbleBot
+                }`}
+              >
+                <p className={styles.messageText}>{msg.text}</p>
+              </div>
+            </div>
+          );
+        })}
+
         {/* Typing Indicator */}
-         {isBotProcessing && (
-          <div className="bg-seashell-pink self-start text-brown font-semibold px-3 py-[1%] rounded-lg flex space-x-1">
-            <span className="animate-bounce">.</span>
-            <span className="animate-bounce delay-150">.</span>
-            <span className="animate-bounce delay-300">.</span>
+        {isBotProcessing && (
+          <div className={styles.typingIndicator}>
+            <div className={`${styles.messageAvatar} ${styles.messageAvatarBot}`}>
+              🤖
+            </div>
+            <div className={styles.typingBubble}>
+              <span className={styles.typingDot}></span>
+              <span className={styles.typingDot}></span>
+              <span className={styles.typingDot}></span>
+            </div>
           </div>
         )}
       </div>
+
+      {/* Input Area */}
       {isClient && (
-        <form
-          onSubmit={sendMessage}
-           className="mt-4"
-        >
-          <div className="flex items-center bg-expresso rounded-xl border border-black px-3 py-2 shadow-md">
-            <input
-              type="text"
-              className="flex-1 text-cream placeholder-cream bg-transparent outline-none font-[200]"
-              placeholder="Type a message"
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              required
-            />
+        <div className={styles.inputContainer}>
+          <form onSubmit={sendMessage} className={styles.inputForm}>
+            <div className={styles.inputWrapper}>
+              <input
+                type="text"
+                className={styles.input}
+                placeholder="Type your message..."
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                disabled={isBotProcessing}
+                aria-label="Message input"
+              />
+            </div>
             <button
               type="submit"
-              className="text-cream font-semibold ml-2 hover:text-cinereous transition"
-              disabled={isBotProcessing}
+              className={styles.sendButton}
+              disabled={isBotProcessing || !input.trim()}
+              aria-label="Send message"
             >
-           <Image src="./send.svg" alt="Sales" width={20} height={20} />
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <line x1="22" y1="2" x2="11" y2="13" />
+                <polygon points="22 2 15 22 11 13 2 9 22 2" />
+              </svg>
             </button>
-          </div>
-        </form>
+          </form>
+        </div>
       )}
     </div>
   );
