@@ -20,6 +20,9 @@
   // Get custom colour if provided
   const customColour = script.getAttribute("data-colour") || "#5A2A27";
 
+  // Get custom tagline if provided
+  const customTagline = script.getAttribute("data-tagline") || "Talk to our AI Agent now";
+
   // Create iframe container
   const iframeWrapper = document.createElement("div");
   iframeWrapper.style.position = "fixed";
@@ -68,7 +71,7 @@
 
   // Chat text label
   const bubbleText = document.createElement("div");
-  bubbleText.innerHTML = "Talk to our AI Agent now";
+  bubbleText.innerHTML = customTagline;
   bubbleText.style.position = "fixed";
   bubbleText.style.bottom = "60px";
   bubbleText.style.right = "140px";
@@ -83,7 +86,7 @@ bubbleText.style.background = "rgba(255, 255, 255, 0.6)"; // #8ECAE6 with 10% op
   bubbleText.style.border = "3px solid #eee";
   bubbleText.style.zIndex = "999997";
   bubbleText.style.fontSize = "16px";
-    bubbleText.style.fontWeight = "500";
+    bubbleText.style.fontWeight = "600";
   bubbleText.style.color = customColour;
 
   // Floating chat bubble
