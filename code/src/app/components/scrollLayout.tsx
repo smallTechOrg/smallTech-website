@@ -4,7 +4,6 @@ import Page from './pageContent';
 import Landing from '../landing/landing';
 import Domains from '../domains/domains';
 import Offerings from '../offerings/offerings';
-import Chat from '../chat/chat';
 import Portfolio from '../portfolio/portfolio';
 import EmbedScript from './embedScript';
 
@@ -34,13 +33,6 @@ useScrollSync()
           key="domains"
           id="domains"
           content={<Domains/>}
-        />
-        
-        <Page
-          key="chat"
-          id="chat"
-          content={<Chat/>}
-          className="md:hidden"
         />
 
       </main>

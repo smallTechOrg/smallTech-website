@@ -2,7 +2,6 @@
 @import "./components/core/footer.css";
 @import "./components/core/header.css";
 @import "./components/typography.css";
-@import './components/common/dropdown.css';
 @import './components/common/card.css';
 @import './domains//domains.css';
 @import './landing/landing.css';
