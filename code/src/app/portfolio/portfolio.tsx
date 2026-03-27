@@ -4,7 +4,7 @@ export default function Portfolio() {
   return (
     <div className="relative min-h-screen overflow-hidden px-[3%] pt-3 ">
     
-      <h2 className="">Building Smart Tools for a Smarter World</h2>
+      <h1 className="">Building Smart Tools for a Smarter World</h1>
       <h3 className=" mb-5 font-[200]"> Explore our portfolio of AI agents and apps.</h3>
       <div className="flex flex-col md:flex-row justify-between gap-[20%] md:gap-4 lg:px-[5%]">
         {/* <div className="flex flex-col md:flex-row justify-between gap-8"> */}
