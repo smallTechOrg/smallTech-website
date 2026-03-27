@@ -8,7 +8,7 @@ export default function Header() {
       {/* Set height only — width becomes auto */}
       <Image
         src="/logo.png"
-        alt="Logo"
+        alt="SmallTech Logo"
         width={0}
         height={0}
         className="h-[4em] w-auto object-contain"

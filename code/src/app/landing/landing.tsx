@@ -109,7 +109,7 @@ export default function Landing() {
         <div className="md:hidden flex flex-col">
 
           <div>
-            <h2 className="">
+            <h2 className="" aria-hidden="true">
               Our Mission
             </h2>
             <p className="mb-3"> At smallTech we are changing how the world &quot;works&quot;.
@@ -117,7 +117,7 @@ export default function Landing() {
             </p>
           </div>
           <div className="">
-            <h2>
+            <h2 aria-hidden="true">
               Who We Are
             </h2>
             <p>
@@ -164,7 +164,7 @@ export default function Landing() {
           </div>
 
           <div className="">
-            <h2 className=""> Our Expertise
+            <h2 className="" aria-hidden="true"> Our Expertise
             </h2>
             <h3 className="">
               Integrate AI across your stack and into your existing workflows.

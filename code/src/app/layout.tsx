@@ -10,22 +10,49 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "SmallTech",
-  description: "Tailored tech solutions for your business.",
+  title: "SmallTech | Custom Software & AI Solutions for Business",
+  description: "SmallTech builds tailored software solutions — AI integration, web & app development, cloud architecture, and continuous delivery for businesses of all sizes.",
+  keywords: ["software development", "AI integration", "web development", "app development", "cloud architecture", "tech solutions", "SmallTech", "custom software"],
+  robots: "index, follow",
+  alternates: {
+    canonical: "https://smalltech.in",
+  },
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+  },
   openGraph: {
-    title: 'SmallTech',
-    description: 'Tailored tech solutions for your business.',
-    url: 'https://smalltech.in',
-    siteName: 'SmallTech',
+    title: "SmallTech | Custom Software & AI Solutions for Business",
+    description: "SmallTech builds tailored software solutions — AI integration, web & app development, cloud architecture, and continuous delivery for businesses of all sizes.",
+    url: "https://smalltech.in",
+    siteName: "SmallTech",
     images: [
       {
-        url: 'https://smalltech.in/logo.png',
-        alt: 'SmallTech Logo',
+        url: "https://smalltech.in/logo.png",
+        alt: "SmallTech Logo",
+        width: 1200,
+        height: 630,
       },
     ],
-    locale: 'en_US',
-    type: 'website',
+    locale: "en_US",
+    type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "SmallTech | Custom Software & AI Solutions for Business",
+    description: "SmallTech builds tailored software solutions — AI integration, web & app development, cloud architecture, and continuous delivery for businesses of all sizes.",
+    images: ["https://smalltech.in/logo.png"],
+  },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "SmallTech",
+  "url": "https://smalltech.in",
+  "logo": "https://smalltech.in/logo.png",
+  "description": "SmallTech builds tailored software solutions — AI integration, web & app development, cloud architecture, and continuous delivery for businesses of all sizes.",
+  "sameAs": ["https://aiblog.smalltech.in"],
 };
 
 export default function RootLayout({
@@ -36,6 +63,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         {/* Google Analytics */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-YTYS0G2P7L"

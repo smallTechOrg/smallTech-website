@@ -14,7 +14,7 @@ export default function Domains() {
       <div className="md:hidden min-h-screen flex flex-col justify-start py-6">
         <section className="w-full">
 
-          <h2 className="mb-2">Tech Domains</h2>
+          <h2 className="mb-2" aria-hidden="true">Tech Domains</h2>
           <h3 className="mb-2">
             Our network of service providers help us deliver end-to-end solutions
           </h3>
@@ -36,7 +36,7 @@ export default function Domains() {
       <div className="md:hidden min-h-screen flex flex-col justify-start py-6 ">
         <section className="w-full">
 
-          <h2 className="mb-2">Business Workflows</h2>
+          <h2 className="mb-2" aria-hidden="true">Business Workflows</h2>
           <h3 className="mb-5">
             Workflows our team has automated for our clients
           </h3>

@@ -10,7 +10,7 @@ export default function Offerings() {
       {/* MOBILE SCREEN 2: OFFERINGS */}
       <div className=" md:hidden min-h-screen flex flex-col justify-start py-6">
         <section>
-          <h2 className="mb-3">What makes us stand out</h2>
+          <h2 className="mb-3" aria-hidden="true">What makes us stand out</h2>
           <h3 className="mb-4">
             These are integral to our process and each project we undertake
           </h3>
@@ -30,7 +30,7 @@ export default function Offerings() {
       {/*MOBILE SCREEN 1: TECHNOLOGIES*/}
       <div className="md:hidden min-h-screen flex flex-col justify-between py-6">
         <section className="w-full">
-          <h2 className="mb-3">Technologies we support</h2>
+          <h2 className="mb-3" aria-hidden="true">Technologies we support</h2>
           <h3 className=" mb-5">
             Integrate AI across your existing tech stack
           </h3>
@@ -38,7 +38,7 @@ export default function Offerings() {
           <div className="grid grid-cols-3 gap-10">
             {techItems.map((icon, i) => (
               <div key={i} className="flex justify-center">
-                <Image src={`./${icon}`} alt={icon} width={50} height={50} />
+                <Image src={`./${icon.src}`} alt={icon.alt} width={50} height={50} />
               </div>
             ))}
           </div>
@@ -75,7 +75,7 @@ export default function Offerings() {
         <div className="grid grid-cols-9 gap-y-5 ">
           {techItems.map((icon, idx) => (
             <div key={idx} className="flex justify-center opacity-75">
-              <Image src={`./${icon}`} alt={icon} width={70} height={70} />
+              <Image src={`./${icon.src}`} alt={icon.alt} width={70} height={70} />
             </div>
           ))}
         </div>
